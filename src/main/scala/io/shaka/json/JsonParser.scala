@@ -1,4 +1,5 @@
-package io.shaka
+package io.shaka.json
+
 import util.parsing.json.JSON
 
 object Json {
@@ -20,5 +21,3 @@ class Json(content: Any){
   def toDouble = toString.toDouble
   def toBoolean = toString.toBoolean
 }
-
-class BadJsonException(json: String, t: Throwable) extends RuntimeException(s"Bad JSON, can not parse: $json", t)

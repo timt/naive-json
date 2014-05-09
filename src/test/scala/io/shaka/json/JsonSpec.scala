@@ -1,4 +1,4 @@
-package io.shaka
+package io.shaka.json
 
 import org.scalatest.Spec
 import org.scalatest.Matchers._
