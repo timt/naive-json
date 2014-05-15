@@ -3,8 +3,7 @@
    - "2.10.4"
  jdk:
    - oraclejdk7
- before_install:
-   - env: LIB_VERSION=$TRAVIS_BUILD_NUMBER
+ env: LIB_VERSION=$TRAVIS_BUILD_NUMBER
  after_success:
    - echo $LIB_VERSION
    - echo "Hello world"
