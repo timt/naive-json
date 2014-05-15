@@ -4,3 +4,5 @@
  jdk:
    - oraclejdk7
  env: LIB_VERSION=$TRAVIS_BUILD_NUMBER
+ before_script: ./publish/publish.sh
+ script: sbt test publish

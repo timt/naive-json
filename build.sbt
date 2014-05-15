@@ -13,7 +13,7 @@ libraryDependencies ++= Seq(
 )
 
 publishTo <<= version { version: String =>
-  val github = "./repo/repo/"
+  val github = "./publish/"
   if (version.trim.endsWith("SNAPSHOT")) Some(Resolver.file("file",  new File( github + "snapshots/")))
   else                                   Some(Resolver.file("file",  new File( github + "releases/")))
 }
