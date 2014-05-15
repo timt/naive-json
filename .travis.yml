@@ -4,8 +4,3 @@
  jdk:
    - oraclejdk7
  env: LIB_VERSION=$TRAVIS_BUILD_NUMBER
- before_script:
-   - echo "hello$LIB_VERSION"
- after_success:
-   - echo $LIB_VERSION
-   - echo "Hello world"

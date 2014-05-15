@@ -1,8 +1,10 @@
+import scala.util.Try
+
 name := "json"
 
 organization := "io.shaka"
 
-version := "0.1"
+version := Try(sys.env("LIB_VERSION")).getOrElse("1")
 
 scalaVersion := "2.10.4"
 
@@ -10,8 +12,8 @@ libraryDependencies ++= Seq(
     "org.scalatest" % "scalatest_2.10" % "2.1.4" % "test"
 )
 
-publishTo <<= (version) { version: String =>
-  val github = "/Users/timt/Projects/timt.github.com/repo/"
+publishTo <<= version { version: String =>
+  val github = "./repo/repo/"
   if (version.trim.endsWith("SNAPSHOT")) Some(Resolver.file("file",  new File( github + "snapshots/")))
   else                                   Some(Resolver.file("file",  new File( github + "releases/")))
 }

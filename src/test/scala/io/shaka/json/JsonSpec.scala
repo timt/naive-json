@@ -32,7 +32,6 @@ class JsonSpec extends Spec {
     """.stripMargin)
 
   def `can get string value e.g. widget ~> window ~> title`() {
-    println("############## LIB_VERSION = " +Try(sys.env("LIB_VERSION")).getOrElse("I don't know this"))
     val string: Json = json ~> 'widget ~> 'window ~> 'title
     assert(string.toString === "Sample Konfabulator Widget")
   }
