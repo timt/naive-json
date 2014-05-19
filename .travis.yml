@@ -6,3 +6,4 @@
  env: LIB_VERSION=$TRAVIS_BUILD_NUMBER
  before_script: ./publish/publish.sh
  script: sbt test publish
+ secure: "UNV8j0ltEHA/uWugQOH38ER+Ky9hjCjm0tFvg0B9AUHAmpoHZPYhSKStjrHZz/WMI0b2MnNgtktbdvC92bDvkTBtrlFM89/ZkmaDNLvO6NFv+MSleu4xf848opsVyz7uYcZ7uStUi86MvwCeiU4SrB3uK+E4af19elWWi++x10c="
