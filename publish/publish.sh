@@ -1,5 +1,5 @@
 #!/bin/bash
-cd $HOME/publish
+cd $TRAVIS_BUILD_DIR/publish
 
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "travis-ci"
