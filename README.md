@@ -1,4 +1,4 @@
-json
+json    [![Build Status](https://travis-ci.org/timt/json.png?branch=master)](https://travis-ci.org/timt/json)
 ----
 A really simple json parser library implemented in scala with no dependencies
 
@@ -13,7 +13,7 @@ Add the following lines to your build.sbt
 
     resolvers += "Tim Tennant's repo" at "http://timt.github.com/repo/releases/"
 
-    libraryDependencies += "io.shaka" %% "json" % "0.1"
+    libraryDependencies += "io.shaka" %% "json" % "17"
 
     import io.shaka.json.Json
     ...
@@ -21,6 +21,8 @@ Add the following lines to your build.sbt
     val contentAtThing2 = json ~> 'thing1 ~> 'thing2
 
 For more examples see [JsonSpec.scala](https://github.com/timt/json/blob/master/src/test/scala/io/shaka/json/JsonSpec.scala)
+
+See [https://travis-ci.org/timt/json](https://travis-ci.org/timt/json) for latest released version number
 
 
 Code license
