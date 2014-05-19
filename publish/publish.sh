@@ -1,4 +1,5 @@
 #!/bin/bash
+echo -e "I got here"
 cd $TRAVIS_BUILD_DIR/publish
 
 git config --global user.email "travis@travis-ci.org"
