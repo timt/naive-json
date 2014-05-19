@@ -8,6 +8,7 @@ if [ "$TRAVIS_REPO_SLUG" == "timt/json" ] && [ "$TRAVIS_PULL_REQUEST" == "false"
 
     cp -R releases/ timt.github.com/repo/
     cd timt.github.com
+    scala GenerateIndeces.scala
     git add -f .
     git commit -m "Lastest json lib on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to repo"
     git push -fq origin master > /dev/null
