@@ -1,6 +1,6 @@
 import scala.util.Try
 
-name := "json"
+name := "naive-json"
 
 organization := "io.shaka"
 
