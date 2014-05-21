@@ -13,7 +13,7 @@ Add the following lines to your build.sbt
 
     resolvers += "Tim Tennant's repo" at "http://timt.github.com/repo/releases/"
 
-    libraryDependencies += "io.shaka" %% "json" % "17"
+    libraryDependencies += "io.shaka" %% "naive-json" % "20"
 
     import io.shaka.json.Json
     ...
