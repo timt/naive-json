@@ -15,7 +15,7 @@ libraryDependencies ++= Seq(
 
 bintrayPublishSettings
 
-repository in bintray := "maven"
+repository in bintray := "repo"
 
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
