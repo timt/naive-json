@@ -1,4 +1,4 @@
-json    [![Build Status](https://travis-ci.org/timt/json.png?branch=master)](https://travis-ci.org/timt/json)
+json    [![Build Status](https://travis-ci.org/timt/naive-json.png?branch=master)](https://travis-ci.org/timt/naive-json)
 ----
 A really simple json parser library implemented in scala with no dependencies
 
@@ -13,7 +13,7 @@ Add the following lines to your build.sbt
 
     resolvers += "Tim Tennant's repo" at "http://timt.github.com/repo/releases/"
 
-    libraryDependencies += "io.shaka" %% "naive-json" % "20"
+    libraryDependencies += "io.shaka" %% "naive-json" % "26"
 
     import io.shaka.json.Json
     ...
@@ -22,7 +22,7 @@ Add the following lines to your build.sbt
 
 For more examples see [JsonSpec.scala](https://github.com/timt/json/blob/master/src/test/scala/io/shaka/json/JsonSpec.scala)
 
-See [https://travis-ci.org/timt/json](https://travis-ci.org/timt/json) for latest released version number
+See [timt/repo](http://dl.bintray.com/timt/repo/io/shaka/naive-json_2.10) for latest released version
 
 
 Code license
