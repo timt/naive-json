@@ -1,2 +1,2 @@
 #!/bin/bash
-eval "echo \"$(< bintray.template)\"" > ~/.bintray/.credentials
+eval "echo \"$(< ./publish/bintray.template)\"" > ~/.bintray/.credentials
