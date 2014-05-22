@@ -17,6 +17,24 @@ bintrayPublishSettings
 
 repository in bintray := "repo"
 
+bintrayOrganization in bintray := None
+
+publishMavenStyle := true
+
+publishArtifact in Test := false
+
+homepage := Some(url("https://github.com/timt/naive-json"))
+
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
-bintrayOrganization in bintray := None
+pomExtra := (
+    <scm>
+      <url>git@github.com:timt/naive-json.git</url>
+      <connection>scm:git:git@github.com:timt/naive-json.git</connection>
+    </scm>
+    <developers>
+      <developer>
+        <id>timt</id>
+      </developer>
+    </developers>
+  )
