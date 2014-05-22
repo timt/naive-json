@@ -1,4 +1,5 @@
 import scala.util.Try
+import bintray.Keys._
 
 name := "naive-json"
 
@@ -12,8 +13,10 @@ libraryDependencies ++= Seq(
     "org.scalatest" % "scalatest_2.10" % "2.1.4" % "test"
 )
 
-publishTo <<= version { version: String =>
-  val github = "./publish/"
-  if (version.trim.endsWith("SNAPSHOT")) Some(Resolver.file("file",  new File( github + "snapshots/")))
-  else                                   Some(Resolver.file("file",  new File( github + "releases/")))
-}
+bintrayPublishSettings
+
+repository in bintray := "maven"
+
+licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+
+bintrayOrganization in bintray := None

@@ -6,6 +6,7 @@
  env:
    global:
      - LIB_VERSION=$TRAVIS_BUILD_NUMBER
-     - secure: b7dkXJmXOJJ0UpTVmPninEOcyry8h4kCT9qMpDsNEgLaRMNjG1sVwE5zJUZl1m8zevVoa7JRcjErOc2ywNaXgBJimO2uRbKHcbu29Olz5W8QXvgleQ3phCYQvv/KoggM+rFBP2lpU3JwZELufEwr7KUqaA0J+a7ay7hR2iUCq5s=
+     - secure: TWZyPbh++iCY3b8XbTTR5HCk7A0HjXcWahjwJt8xLaTA5y++pnlkeABSyIydB4x4UYaIOiA+QgIM6hQ3kQD94tsAZjl4eJRv+Dhaw8bEr/ZApkTE7YgPggr1fasLyLVauy41mMajpEQPm48ArZ7PnX5HeaRvTA0zwzOFVuJvKU4=
+     - secure: EkIKIitI3ArIWwrXUrva+b+i8IndCHHoc9Q15NNhham87VuD62pmZjZaBaAbJtGVPWuLU1DQL5MHAR90bhuabcmxBnLKFfIIilm9WCOtREIxb6fdGZGsDr6705hDj1gof62PU7iuZ5vffoywvCj3oFyjNfLUHmXzjTr3ob4IHYY=
+ before_script: ./publish/bintray.sh
  script: sbt test publish
- after_success: ./publish/publish.sh
