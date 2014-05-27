@@ -15,7 +15,7 @@ libraryDependencies ++= Seq(
 
 pgpPassphrase := Some(Try(sys.env("SECRET")).getOrElse("goaway").toCharArray)
 
-pgpSecretRing := file("./publish/secring.asc")
+pgpSecretRing := file("./publish/sonatype.asc")
 
 bintrayPublishSettings
 
