@@ -11,9 +11,9 @@ Usage
 -----
 Add the following lines to your build.sbt
 
-    resolvers += "Tim Tennant's repo" at "http://timt.github.com/repo/releases/"
+    resolvers += "Tim Tennant's repo" at "http://dl.bintray.com/timt/repo/"
 
-    libraryDependencies += "io.shaka" %% "naive-json" % "26"
+    libraryDependencies += "io.shaka" %% "naive-json" % "29"
 
     import io.shaka.json.Json
     ...
