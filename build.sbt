@@ -13,6 +13,10 @@ libraryDependencies ++= Seq(
     "org.scalatest" % "scalatest_2.10" % "2.1.4" % "test"
 )
 
+pgpPassphrase := Some(Try(sys.env("SECRET")).getOrElse("goaway").toCharArray)
+
+pgpSecretRing := file("./publish/secring.asc")
+
 bintrayPublishSettings
 
 repository in bintray := "repo"

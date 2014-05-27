@@ -8,5 +8,6 @@
      - LIB_VERSION=$TRAVIS_BUILD_NUMBER
      - secure: TWZyPbh++iCY3b8XbTTR5HCk7A0HjXcWahjwJt8xLaTA5y++pnlkeABSyIydB4x4UYaIOiA+QgIM6hQ3kQD94tsAZjl4eJRv+Dhaw8bEr/ZApkTE7YgPggr1fasLyLVauy41mMajpEQPm48ArZ7PnX5HeaRvTA0zwzOFVuJvKU4=
      - secure: EkIKIitI3ArIWwrXUrva+b+i8IndCHHoc9Q15NNhham87VuD62pmZjZaBaAbJtGVPWuLU1DQL5MHAR90bhuabcmxBnLKFfIIilm9WCOtREIxb6fdGZGsDr6705hDj1gof62PU7iuZ5vffoywvCj3oFyjNfLUHmXzjTr3ob4IHYY=
+     - secure: f+0qV5wmM7VJ9lVVhr1V/rPvrwoe8gOvrMmT7kbeknBJXxe/UMsL9eLK5vM0gk6cwIe5ZJJ7a/CNLBMG19n3RLfcBwc6UH+wrySVKAZCc1mId2D9CWX4Ac4veC3ladTiJp3PwoQVRiIM0ne5h46Io6Gj7wfs20hfaQXvotZmGwE=
  before_script: ./publish/bintray.sh
  script: sbt test publish
