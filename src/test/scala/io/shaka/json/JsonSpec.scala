@@ -32,27 +32,27 @@ class JsonSpec extends Spec {
     """.stripMargin)
 
   def `can get string value e.g. widget ~> window ~> title`() {
-    val string: Json = json ~> 'widget ~> 'window ~> 'title
+    val string: Json = json.widget.window.title
     assert(string.toString === "Sample Konfabulator Widget")
   }
 
   def `can get number value e.g. widget ~> window ~> width`() {
-    val number: Json = json ~> 'widget ~> 'window ~> 'width
+    val number: Json = json.widget.window.width
     assert(number.toDouble === 500)
   }
 
   def `can get boolean value e.g. widget ~> image ~> center`() {
-    val boolean: Json = json ~> 'widget ~> 'image ~> 'center
+    val boolean: Json = json.widget.image.center
     assert(boolean.toBoolean === true)
   }
 
   def `can get map value e.g. widget ~> text`() {
-    val aMap:Map[String,String] = (json ~> 'widget ~> 'text).toMap
+    val aMap:Map[String,String] = (json.widget.text).toMap
     assert(aMap === Map("data"->"Click Here", "style" -> "bold"))
   }
 
   def `can get list value e.g. widget ~> extras`() {
-    val aList:List[String] = (json ~> 'widget ~> 'extras).toList
+    val aList:List[String] = (json.widget.extras).toList
     assert(aList === List("foo", "bar"))
   }
 

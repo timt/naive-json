@@ -18,7 +18,7 @@ Add the following lines to your build.sbt
     import io.shaka.json.Json
     ...
     val json = Json("""{"thing1":{"thing2":"meet thing1"}}""")
-    val contentAtThing2 = json ~> 'thing1 ~> 'thing2
+    val contentAtThing2 = json.thing1.thing2
 
 For more examples see [JsonSpec.scala](https://github.com/timt/json/blob/master/src/test/scala/io/shaka/json/JsonSpec.scala)
 

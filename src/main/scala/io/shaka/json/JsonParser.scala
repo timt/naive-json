@@ -1,6 +1,7 @@
 package io.shaka.json
 
-import util.parsing.json.JSON
+import scala.language.dynamics
+import scala.util.parsing.json.JSON
 
 object Json {
   def apply(json: String) = new Json(try {
@@ -11,13 +12,13 @@ object Json {
   })
 }
 
-class Json(content: Any){
-  def ~>(key: String):Json = new Json(toMap(key))
-  def ~>(key: Symbol):Json = ~>(key.name)
+class Json(content: Any) extends Dynamic{
+  def selectDynamic(key: String):Json = new Json(toMap(key))
   def toMap[A] = content.asInstanceOf[Map[String,A]]
   def toList[A] = content.asInstanceOf[List[A]]
 
   override def toString = content.toString
   def toDouble = toString.toDouble
   def toBoolean = toString.toBoolean
+
 }
