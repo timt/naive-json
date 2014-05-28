@@ -18,7 +18,7 @@ class Json(content: Any) extends Dynamic{
   def toList[A] = content.asInstanceOf[List[A]]
 
   override def toString = content.toString
-  def toDouble = toString.toDouble
+  def toBigDecimal = BigDecimal(toString)
   def toBoolean = toString.toBoolean
 
 }

@@ -37,7 +37,7 @@ class JsonSpec extends Spec {
 
   def `can get number value e.g. widget ~> window ~> width`() {
     val number: Json = json.widget.window.width
-    assert(number.toDouble === 500)
+    assert(number.toBigDecimal === 500)
   }
 
   def `can get boolean value e.g. widget ~> image ~> center`() {
