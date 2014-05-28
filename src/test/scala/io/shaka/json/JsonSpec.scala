@@ -2,7 +2,6 @@ package io.shaka.json
 
 import org.scalatest.Spec
 import org.scalatest.Matchers._
-import scala.util.Try
 
 
 class JsonSpec extends Spec {
@@ -47,12 +46,12 @@ class JsonSpec extends Spec {
   }
 
   def `can get map value e.g. widget ~> text`() {
-    val aMap:Map[String,String] = (json.widget.text).toMap
+    val aMap:Map[String,String] = json.widget.text.toMap
     assert(aMap === Map("data"->"Click Here", "style" -> "bold"))
   }
 
   def `can get list value e.g. widget ~> extras`() {
-    val aList:List[String] = (json.widget.extras).toList
+    val aList:List[String] = json.widget.extras.toList
     assert(aList === List("foo", "bar"))
   }
 
