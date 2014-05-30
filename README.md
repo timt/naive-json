@@ -1,4 +1,4 @@
-json    [![Build Status](https://travis-ci.org/timt/naive-json.png?branch=master)](https://travis-ci.org/timt/naive-json)
+json    [![Build Status](https://travis-ci.org/timt/naive-json.png?branch=master)](https://travis-ci.org/timt/naive-json) [ ![Download](https://api.bintray.com/packages/timt/repo/naive-json/images/download.png) ](https://bintray.com/timt/repo/naive-json/_latestVersion)
 ----
 A really simple json parser library implemented in scala with no dependencies
 
@@ -21,9 +21,6 @@ Add the following lines to your build.sbt
     val contentAtThing2 = json.thing1.thing2
 
 For more examples see [JsonSpec.scala](https://github.com/timt/json/blob/master/src/test/scala/io/shaka/json/JsonSpec.scala)
-
-See [timt/repo](http://dl.bintray.com/timt/repo/io/shaka/naive-json_2.10) for latest released version
-
 
 Code license
 ------------
