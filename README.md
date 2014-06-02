@@ -15,6 +15,8 @@ Add the following lines to your build.sbt
 
     libraryDependencies += "io.shaka" %% "naive-json" % "29"
 
+Start hacking
+
     import io.shaka.json.Json
     ...
     val json = Json("""{"thing1":{"thing2":"meet thing1"}}""")
