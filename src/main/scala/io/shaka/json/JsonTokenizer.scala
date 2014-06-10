@@ -1,5 +1,7 @@
 package io.shaka.json
 
+import io.shaka.json.Token._
+
 object JsonTokenizer {
   val leftBrace = TokenMatcher("\\{")
   val rightBrace = TokenMatcher("\\}")
@@ -25,20 +27,20 @@ object JsonTokenizer {
 
   def tokenize(json: String, tokens: List[Token] = List()): List[Token] = {
     val trimmedJson = json.trim
-    def continue(matched: String) = tokenize(trimmedJson.substring(matched.length), Token(matched) :: tokens)
+    def continue(token: Token) = tokenize(trimmedJson.substring(token.value.length), token :: tokens)
     trimmedJson match {
       case "" => tokens.reverse
-      case leftBrace(s) => continue(s)
-      case rightBrace(s) => continue(s)
-      case leftBracket(s) => continue(s)
-      case rightBracket(s) => continue(s)
-      case colon(s) => continue(s)
-      case comma(s) => continue(s)
-      case isTrue(s) => continue(s)
-      case isFalse(s) => continue(s)
-      case isNull(s) => continue(s)
-      case string(s) => continue(s)
-      case number(s) => continue(s)
+      case leftBrace(s) => continue(LEFT_BRACE)
+      case rightBrace(s) => continue(RIGHT_BRACE)
+      case leftBracket(s) => continue(LEFT_BRACKET)
+      case rightBracket(s) => continue(RIGHT_BRACKET)
+      case colon(s) => continue(COLON)
+      case comma(s) => continue(COMMA)
+      case isTrue(s) => continue(TRUE)
+      case isFalse(s) => continue(FALSE)
+      case isNull(s) => continue(NULL)
+      case string(s) => continue(StringToken(s))
+      case number(s) => continue(NumberToken(s))
       case oops => println(s"oops!!!! seems we didn't deal with --- $oops --- tokens :("); tokens.reverse
     }
   }
