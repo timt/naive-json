@@ -12,6 +12,8 @@ object Token{
   case object FALSE extends Token{val value = "false"}
   case object NULL extends Token{val value = "null"}
   case class NumberToken(value: String) extends Token
-  case class StringToken(value: String) extends Token
+  case class StringToken(value: String) extends Token{
+    override def toString: String = value.tail.init
+  }
 }
 
