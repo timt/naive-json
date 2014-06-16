@@ -52,6 +52,11 @@ class JsonTokenizerSpec extends Spec {
     assert(tokens === List(LEFT_BRACKET, StringToken("\"sheep\""), COMMA, StringToken("\"cheese\""), COMMA, NumberToken("123.456"), COMMA, LEFT_BRACE, StringToken("\"greeting\""), COLON, StringToken("\"sheep & cheese!\""), RIGHT_BRACE, RIGHT_BRACKET))
   }
 
+  def `tokenize list in json list`() {
+    val tokens = JsonTokenizer.tokenize( """[ "sheep", "cheese", 123.456,  [ "greeting", "sheep & cheese!" ]]""")
+    assert(tokens === List(LEFT_BRACKET, StringToken("\"sheep\""), COMMA, StringToken("\"cheese\""), COMMA, NumberToken("123.456"), COMMA, LEFT_BRACKET, StringToken("\"greeting\""), COMMA, StringToken("\"sheep & cheese!\""), RIGHT_BRACKET, RIGHT_BRACKET))
+  }
+
 }
 
 
