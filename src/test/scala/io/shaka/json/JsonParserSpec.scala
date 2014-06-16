@@ -1,10 +1,11 @@
 package io.shaka.json
 
-import org.scalatest.{FunSuite, Spec}
+import org.scalatest.FunSuite
 import JsonParser.parse
 import io.shaka.json.Token._
 import io.shaka.json.Token.StringToken
 import io.shaka.json.Token.NumberToken
+import org.scalatest.Matchers._
 
 class JsonParserSpec extends FunSuite {
 
@@ -56,7 +57,20 @@ class JsonParserSpec extends FunSuite {
     assert(parse( """{ "greeting" : "sheep & cheese!", "france" : [ "mouton", {"greeting": "mouton et fromage!"}, "fromage" ] ,"isSheepCheese" : null }""") === Map("greeting" -> "sheep & cheese!", "france" -> List("mouton", Map("greeting" -> "mouton et fromage!"), "fromage"), "isSheepCheese" -> null))
   }
 
-  //test parsing errors
+  test("Get nice error message when object not correctly defined") {
+    val exception = intercept[MalformedJsonException] {
+      parse( """{ "greeting":"sheep & cheese!" """)
+    }
+    assert(exception.getMessage === """Missing closing }! - can not parse: {"greeting":"sheep & cheese!"""")
+  }
+
+  test("Get nice error message when array not correctly defined") {
+    val exception = intercept[MalformedJsonException] {
+      parse( """[ "sheep", "cheese!" """)
+    }
+    assert(exception.getMessage === """Missing closing ]! - can not parse: ["sheep","cheese!"""")
+  }
+
 
 
 }
@@ -74,10 +88,9 @@ object JsonParser {
   }
 
   private def jsonObject(tokens: List[Token]): Map[String, Any] = {
-    //TODO handle malformedness
-    //    if(tokens.last != Token("}"){
-    //      throw new MalformedJsonException("Missing closing }!", toJsonString(tokens))
-    //    }
+    if (tokens.last != RIGHT_BRACE) {
+      throw new MalformedJsonException("Missing closing }!", toJsonString(tokens))
+    }
     def objectContent(tokens: List[Token]): Map[String, Any] = {
       tokens match {
         case (key: StringToken) :: COLON :: aValue :: Nil => Map(key.toString -> value(aValue))
@@ -86,7 +99,7 @@ object JsonParser {
           val (objectTokens, theRest) = takeJsonObjectFromHead(LEFT_BRACE :: more)
           Map(key.toString -> value(objectTokens)) ++ objectContent(theRest)
         case (key: StringToken) :: COLON :: LEFT_BRACKET :: more =>
-          val (arrayTokens, theRest) = takeJsonArrayFromHead(LEFT_BRACKET::more)
+          val (arrayTokens, theRest) = takeJsonArrayFromHead(LEFT_BRACKET :: more)
           Map(key.toString -> value(arrayTokens)) ++ objectContent(theRest)
         case Nil => Map()
         case _ => throw new MalformedJsonException("Doh!", toJsonString(tokens))
@@ -96,10 +109,9 @@ object JsonParser {
   }
 
   private def jsonArray(tokens: List[Token]): List[Any] = {
-    //TODO handle malformedness
-    //    if(tokens.last != Token("]"){
-    //      throw new MalformedJsonException("Missing closing ]!", toJsonString(tokens))
-    //    }
+    if (tokens.last != RIGHT_BRACKET) {
+      throw new MalformedJsonException("Missing closing ]!", toJsonString(tokens))
+    }
     def arrayContents(tokens: List[Token]): List[Any] = {
       tokens match {
         case aValue :: COMMA :: theRest => value(aValue) :: arrayContents(theRest)
