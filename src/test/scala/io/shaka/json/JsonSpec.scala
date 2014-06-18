@@ -3,7 +3,6 @@ package io.shaka.json
 import org.scalatest.Spec
 import org.scalatest.Matchers._
 
-
 class JsonSpec extends Spec {
   val json = Json(
     """

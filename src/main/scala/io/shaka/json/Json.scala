@@ -1,11 +1,10 @@
 package io.shaka.json
 
 import scala.language.dynamics
-import scala.util.parsing.json.JSON
 
 object Json {
   def apply(json: String) = new Json(try {
-    JSON.parseFull(json).get
+    JsonParser.parse(json)
   }
   catch {
     case e: Throwable => throw new BadJsonException(json, e)
