@@ -7,10 +7,12 @@ organization := "io.shaka"
 
 version := Try(sys.env("LIB_VERSION")).getOrElse("1")
 
-scalaVersion := "2.10.4"
+scalaVersion := "2.11.1"
+
+crossScalaVersions := Seq("2.10.4", "2.11.1")
 
 libraryDependencies ++= Seq(
-    "org.scalatest" % "scalatest_2.10" % "2.1.4" % "test"
+    "org.scalatest" %% "scalatest" % "2.2.0" % "test"
 )
 
 pgpPassphrase := Some(Try(sys.env("SECRET")).getOrElse("goaway").toCharArray)
