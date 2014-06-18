@@ -5,7 +5,6 @@ import JsonParser.parse
 import io.shaka.json.Token._
 import io.shaka.json.Token.StringToken
 import io.shaka.json.Token.NumberToken
-import org.scalatest.Matchers._
 
 class JsonParserSpec extends FunSuite {
 
@@ -70,6 +69,50 @@ class JsonParserSpec extends FunSuite {
     }
     assert(exception.getMessage === """Missing closing ]! - can not parse: ["sheep","cheese!"""")
   }
+
+  test("Will parse some big example"){
+    val bigJobby = parse(bigSample).asInstanceOf[Map[String, Any]]
+    val firstResult = bigJobby("results").asInstanceOf[List[Any]](0).asInstanceOf[Map[String, Any]]
+    val metadata = firstResult("metadata").asInstanceOf[Map[String, Any]]
+    assert(firstResult("id") === 1478555574)
+    assert(firstResult("iso_language_code") === "nl")
+    assert(bigJobby("max_id") === 1480307926)
+    assert(metadata("result_type") === "popular")
+  }
+
+  val bigSample =
+    """
+      |{
+      |    "results": [
+      |        {
+      |            "text": "@twitterapi  http://tinyurl.com/ctrefg",
+      |            "to_user_id": 396524,
+      |            "to_user": "TwitterAPI",
+      |            "from_user": "jkoum",
+      |            "metadata": {
+      |                "result_type": "popular",
+      |                "recent_retweets": 109
+      |            },
+      |            "id": 1478555574,
+      |            "from_user_id": 1833773,
+      |            "iso_language_code": "nl",
+      |            "source": "<a href='http: //twitter.com/'>twitter< /a>",
+      |            "profile_image_url": "http://s3.amazonaws.com/twitter_production/profile_images/118412707/2522215727_a5f07da155_b_normal.jpg",
+      |            "created_at": "Wed, 08 Apr 2009 19:22:10 +0000"
+      |        },
+      |        "...truncated..."
+      |    ],
+      |    "since_id": 0,
+      |    "max_id": 1480307926,
+      |    "refresh_url": "?since_id=1480307926&amp;q=%40twitterapi",
+      |    "results_per_page": 15,
+      |    "next_page": "?page=2&amp;max_id=1480307926&amp;q=%40twitterapi",
+      |    "completed_in": 0.031704,
+      |    "page": 1,
+      |    "query": "%40twitterapi"
+      |}
+    """.stripMargin
+
 
 
 
