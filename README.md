@@ -6,6 +6,8 @@ Requirements
 ------------
 
 * [scala](http://www.scala-lang.org) 2.10.4
+* [scala](http://www.scala-lang.org) 2.11.1
+
 
 Usage
 -----
@@ -13,7 +15,7 @@ Add the following lines to your build.sbt
 
     resolvers += "Tim Tennant's repo" at "http://dl.bintray.com/timt/repo/"
 
-    libraryDependencies += "io.shaka" %% "naive-json" % "29"
+    libraryDependencies += "io.shaka" %% "naive-json" % "34"
 
 Start hacking
 
