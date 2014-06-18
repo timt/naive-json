@@ -13,7 +13,6 @@ object JsonTokenizer {
   val isFalse = TokenMatcher("false")
   val isNull = TokenMatcher("null")
   val string = TokenMatcher("\".*?\"")
-//  val number = TokenMatcher("[0-9]+[\\,\\.][0-9]+")
   val number = TokenMatcher("[0-9]+([\\,\\.][0-9]+)?")
 
   class TokenMatcher(partialRegex: String) {
