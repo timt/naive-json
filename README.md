@@ -6,7 +6,7 @@ Requirements
 ------------
 
 * [scala](http://www.scala-lang.org) 2.10.4
-* [scala](http://www.scala-lang.org) 2.11.1
+* [scala](http://www.scala-lang.org) 2.11.2
 
 
 Usage
