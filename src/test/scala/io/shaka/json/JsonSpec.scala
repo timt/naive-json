@@ -58,5 +58,10 @@ class JsonSpec extends Spec {
     a [BadJsonException] should be thrownBy {Json("""{"notwellformed":"json"},""")}
   }
 
+  def `when content is equal json is equal`(){
+    val content = """{"hello": "world"}"""
+    assert(Json(content) === Json(content))
+  }
+
 }
   
