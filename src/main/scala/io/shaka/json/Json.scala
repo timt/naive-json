@@ -12,7 +12,16 @@ object Json {
 }
 
 class Json(val content: Any) extends Dynamic {
-  def selectDynamic(key: String): Json = new Json(toMap(key))
+  def selectDynamic(key: String): Json = {
+    def getObject: Any = try {
+      toMap(key)
+    }
+    catch {
+      case e: NoSuchElementException => throw new JsonObjectNameNotFoundException(key, e)
+      case e: Throwable => throw e
+    }
+    new Json(getObject)
+  }
 
   def toMap[A] = content.asInstanceOf[Map[String, A]]
 

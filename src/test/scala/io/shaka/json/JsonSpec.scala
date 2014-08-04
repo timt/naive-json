@@ -63,5 +63,12 @@ class JsonSpec extends Spec {
     assert(Json(content) === Json(content))
   }
 
+  def `barf when unable to find object name in json`(){
+    a [JsonObjectNameNotFoundException] should be thrownBy {Json("""{"thing1": "meet thing2"}""").thing2}
+  }
+
 }
+
+
+
   
