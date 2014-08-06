@@ -17,6 +17,16 @@ class JsonTokenizerSpec extends FunSuite {
     assert(tokens === List(LEFT_BRACE, StringToken("\"price\""), COLON, NumberToken("0.12"), RIGHT_BRACE))
   }
 
+  test("tokenize negative number value in json object") {
+    val tokens = JsonTokenizer.tokenize( """{ "price" : -0.12 }""")
+    assert(tokens === List(LEFT_BRACE, StringToken("\"price\""), COLON, NumberToken("-0.12"), RIGHT_BRACE))
+  }
+
+  test("tokenize number with exponent value in json object") {
+    val tokens = JsonTokenizer.tokenize( """{ "price" : 0.12E2 }""")
+    assert(tokens === List(LEFT_BRACE, StringToken("\"price\""), COLON, NumberToken("0.12E2"), RIGHT_BRACE))
+  }
+
   test("tokenize integer number value in json object") {
     val tokens = JsonTokenizer.tokenize( """{ "price" : 123 }""")
     assert(tokens === List(LEFT_BRACE, StringToken("\"price\""), COLON, NumberToken("123"), RIGHT_BRACE))
